@@ -1,0 +1,6 @@
+{
+    "data": [
+        {"name": "Spring Mountain", "address": "1 Street 1", "url": "www.spring.com"},
+        {"name": "Vengi", "address": "2 Street 2", "url": "www.vengi.com"} 
+    ]
+}
