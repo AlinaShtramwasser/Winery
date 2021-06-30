@@ -18,12 +18,12 @@ export class WineryService {
 	*/
 	codeName: string;
 	mockDatum: IWinery[] = [
-		new Winery( 1, 'w 1', 'w 1', 'http://www.winery1.com' ),
-		new Winery( 2, 'w 2', 'w 2', 'http://www.winery2.com' ),
-		new Winery( 3, 'w 3', 'w 3', 'http://www.winery3.com' ),
-		new Winery( 4, 'w 4', 'w 4', 'http://www.winery4.com' ),
-		new Winery( 5, 'w 5', 'w 5', 'http://www.winery5.com' ),
-		new Winery( 6, 'w 6', 'w 6', 'http://www.winery6.com' )
+		new Winery( 1, 'Spring Mountain', '2805 Spring Mountain Rd, St. Helena', 'http://www.springmountainvineyard.com/', 'phone1', 'spring@email.com', 'springmountain' ),
+		new Winery( 2, 'Venge', '4708 Silverado Trail N, Calistoga', 'https://www.vengevineyards.com/', 'phone2', 'venge@email.com', 'venge' ),
+		new Winery( 3, 'Von Strasser', '965 Silverado Trail N, Calistoga', 'https://www.vonstrasser.com/', 'phone3', 'von@strasser.com', 'vonstrasser' ),
+		new Winery( 4, 'Iron Horse', ' 9786 Ross Station Rd, Sebastopol', 'https://www.ironhorsevineyards.com/', 'phone4', 'iron@horse.com','ironhorse' ),
+		new Winery( 5, 'Pride', '3000 Summit Trail, Santa Rosa', 'https://www.pridewines.com/', 'phone5', 'pride@email.com','pride' ),
+		new Winery( 6, 'Behrens Family', '4078 Spring Mountain Rd, St Helena', 'https://behrensfamilywinery.com/', 'phone6', 'behrens@mail.com','behrens' )
 	];
 	/*
 	** Service constructor, inject http service.

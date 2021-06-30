@@ -9,19 +9,24 @@ import { WineryGridComponent } from './winery-grid/winery-grid.component';
 import { WineryService } from './winery.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { WineryListComponent } from './winery-list/winery-list.component';
+import {OrderListModule} from 'primeng/orderlist';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
-    WineryGridComponent
+    WineryGridComponent,
+    WineryListComponent
    ],
   imports: [
     BrowserModule,
+    OrderListModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: "", component: WineryGridComponent }
     ]),
-    TableModule
+    TableModule,
+    ToastModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
