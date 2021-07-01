@@ -1,3 +1,10 @@
+
+    button {
+        background-color: maroon;
+        border:maroon;
+        color: maroon;
+    }
+
 .winery-item {
     display: flex;
     align-items: center;
@@ -20,12 +27,7 @@
         align-items: flex-end;
     }
 
-    .winery-url {
-        vertical-align: middle;
-        margin-right: .5rem;
-    }
-
-    .winery-category {
+    .winery-url  {
         vertical-align: middle;
         line-height: 1;
     }
