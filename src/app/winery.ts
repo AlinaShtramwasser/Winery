@@ -24,7 +24,7 @@ export class Winery implements IWinery {
 	** Single place to create a new Winery.
 	*/
 	public static empty( ): IWinery {
-		return new Winery( 0, '', '', '', '','', '');
+		return new Winery( 0, '', '', '', '','', '', 0);
 	}
 	/*
 	** using short-hand declaration...
@@ -36,7 +36,8 @@ export class Winery implements IWinery {
 		public Url: string,
 		public Phone: string,
 		public Email: string,
-		public ImageTitle: string
+		public ImageTitle: string,
+		public Rating: number
 	) { }
 	/*
 	** toString implementation for class Winery
