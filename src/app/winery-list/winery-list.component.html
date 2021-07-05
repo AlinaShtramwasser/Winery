@@ -1,4 +1,5 @@
-<p-orderList [value]="wineries" header="My Wineries" filterBy="Name" filterPlaceholder="Filter by name" [dragdrop]="true">
+<div><button pButton type="button" class="p-button-raised p-button-rounded"></button></div>
+<p-orderList  [value]="wineries" header="My Wineries" filterBy="Name" filterPlaceholder="Filter by name" [dragdrop]="true">
   <ng-template let-winery pTemplate="item">
       <div class="winery-item">
         <div class="image-container">
@@ -6,13 +7,12 @@
         </div>
        <div class="ms-2 winery-list-detail">
          <h5>{{winery.Name}}</h5>
-         <span class=" winery-url">{{winery.Url}}</span>
+         <span class=" winery-url">{{winery.Phone}}</span>
        </div>
-         
         <div class="winery-list-action">
           <h6 class="p-mb-2">{{winery.Rating}}</h6>
-          <span class="pull-right">{{winery.Phone}}</span>
         </div>
-      </div>
+        </div>
   </ng-template>
 </p-orderList>
+

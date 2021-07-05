@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-
+import {ButtonModule} from 'primeng/button';
 import { Subscription } from 'rxjs';
 import { IWinery } from '../winery';
 import { WineryService } from '../winery.service';
