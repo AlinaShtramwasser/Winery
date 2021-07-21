@@ -17,6 +17,7 @@
   </ng-template>
 </p-orderList> -->
 <div class="card">
+  <h3 class="p-mb-2"><p-rating [cancel]="false" [(ngModel)]="val"></p-rating></h3>
   <p-virtualScroller [value]="wineries" scrollHeight="500px" [itemSize]="100">
       <ng-template pTemplate="header">
           <div class="p-d-flex p-ai-center p-jc-between pb-5">
@@ -38,7 +39,8 @@
                   <div class="ps-2">{{winery.Name}}</div>
               </div>
               <div class="winery-list-action">
-                <h3 class="p-mb-2">{{winery.Rating}}</h3>
+                <h3 class="p-mb-2"><p-rating [cancel]="false" [(ngModel)]="val"></p-rating></h3>
+                <!-- <h3 class="p-mb-2">{{winery.Rating}}</h3> -->
                 <span class="pull-right">{{winery.Phone}}</span>
               </div>
           </div>

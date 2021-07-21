@@ -15,6 +15,7 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
 //import {OrderListModule} from 'primeng/orderlist';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [				
@@ -32,6 +33,7 @@ import { AngularMaterialModule } from './angular-material.module';
     ]),
     TableModule,
     ToastModule,
+    RatingModule,
     BrowserAnimationsModule,
     AngularMaterialModule
   ],

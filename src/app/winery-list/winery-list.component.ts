@@ -15,6 +15,8 @@ export class WineryListComponent implements OnInit, OnDestroy {
 /*
 local variables
 	*/
+	val: number = 3;
+
 	private getAllSubscription: Subscription | undefined;
 	codeName = 'winery-grid';
 	wineries: IWinery[] = [];
@@ -35,6 +37,7 @@ local variables
 	ngOnInit() {
 		// load all records
 		this.getAllWineries();
+
 	}
 	//
 	ngOnDestroy() {
