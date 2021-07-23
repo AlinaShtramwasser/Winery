@@ -68,10 +68,15 @@
       }
     }
   }
+
 .winery-header{
   color: #ff4081;
   font-size: xx-large;
   font-weight: bold;
+}
+//for the table
+.winery-data{
+    font-size: large;
 }
   @media screen and (max-width: 960px) {
     .winery-header{
@@ -83,11 +88,6 @@
   
       img {
         width: 50px;
-      }
-  
-      .winery-category-icon,
-      .winery-category {
-        display: none;
       }
     }
   }

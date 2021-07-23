@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { IWinery } from '../winery';
 import { WineryService } from '../winery.service';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-winery-list',
@@ -30,6 +31,7 @@ local variables
 		// communicate to the http web service
 		private _data: WineryService
 	) {
+		this.val=3;
 	}
 	/*
 	** On component initialization, get all data from the data service.
