@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 //for fetching data from external apis and provide them to the app as a stream
 import { HttpClientModule } from "@angular/common/http";
 import {TableModule} from 'primeng/table';
@@ -15,6 +16,7 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
 //import {OrderListModule} from 'primeng/orderlist';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [				
@@ -24,6 +26,7 @@ import { AngularMaterialModule } from './angular-material.module';
    ],
   imports: [
     BrowserModule,
+    FormsModule,
     //OrderListModule,
     VirtualScrollerModule,
     HttpClientModule,
@@ -32,6 +35,7 @@ import { AngularMaterialModule } from './angular-material.module';
     ]),
     TableModule,
     ToastModule,
+    RatingModule,
     BrowserAnimationsModule,
     AngularMaterialModule
   ],
