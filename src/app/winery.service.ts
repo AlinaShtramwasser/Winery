@@ -18,12 +18,12 @@ export class WineryService {
 	*/
 	codeName: string;
 	mockDatum: IWinery[] = [
-		new Winery( 1, 'Spring Mountain', '2805 Spring Mountain Rd, St. Helena', 'http://www.springmountainvineyard.com/', 'phone1', 'spring@email.com', 'springmountain', 5 ),
-		new Winery( 2, 'Venge', '4708 Silverado Trail N, Calistoga', 'https://www.vengevineyards.com/', 'phone2', 'venge@email.com', 'venge', 5 ),
-		new Winery( 3, 'Von Strasser', '965 Silverado Trail N, Calistoga', 'https://www.vonstrasser.com/', 'phone3', 'von@strasser.com', 'vonstrasser', 3 ),
-		new Winery( 4, 'Iron Horse', ' 9786 Ross Station Rd, Sebastopol', 'https://www.ironhorsevineyards.com/', 'phone4', 'iron@horse.com','ironhorse', 2 ),
-		new Winery( 5, 'Pride', '3000 Summit Trail, Santa Rosa', 'https://www.pridewines.com/', 'phone5', 'pride@email.com','pride', 5 ),
-		new Winery( 6, 'Behrens Family', '4078 Spring Mountain Rd, St Helena', 'https://behrensfamilywinery.com/', 'phone6', 'behrens@mail.com','behrens', 3 )
+		new Winery( 1, 'Spring Mountain', '2805 Spring Mountain Rd, St. Helena', 'http://www.springmountainvineyard.com/', '205-333-0303', 'spring@email.com', 'springmountain', 5 ),
+		new Winery( 2, 'Venge', '4708 Silverado Trail N, Calistoga', 'https://www.vengevineyards.com/', '205-777-0303', 'venge@email.com', 'venge', 5 ),
+		new Winery( 3, 'Von Strasser', '965 Silverado Trail N, Calistoga', 'https://www.vonstrasser.com/', '205-793-5555', 'von@strasser.com', 'vonstrasser', 3 ),
+		new Winery( 4, 'Iron Horse', ' 9786 Ross Station Rd, Sebastopol', 'https://www.ironhorsevineyards.com/', '205-123-2255', 'iron@horse.com','ironhorse', 2 ),
+		new Winery( 5, 'Pride', '3000 Summit Trail, Santa Rosa', 'https://www.pridewines.com/', '205-555-5555', 'pride@email.com','pride', 5 ),
+		new Winery( 6, 'Behrens Family', '4078 Spring Mountain Rd, St Helena', 'https://behrensfamilywinery.com/', '205-666-6666', 'behrens@mail.com','behrens', 3 )
 	];
 	/*
 	** Service constructor, inject http service.

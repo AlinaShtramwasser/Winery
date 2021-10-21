@@ -1,4 +1,4 @@
-<p-orderList [value]="wineries" header="My Wineries" filterBy="Name" filterPlaceholder="Filter by name" [dragdrop]="true">
+<!-- <p-orderList [value]="wineries" header="My Wineries" filterBy="Name" filterPlaceholder="Filter by name" [dragdrop]="true">
   <ng-template let-winery pTemplate="item">
       <div class="winery-item">
         <div class="image-container">
@@ -15,4 +15,75 @@
         </div>
       </div>
   </ng-template>
-</p-orderList>
+</p-orderList> -->
+<div class="card">
+  <!-- <p-virtualScroller [value]="wineries" scrollHeight="500px" [itemSize]="100">
+      <ng-template pTemplate="header">
+          <div class="winery-header p-d-flex p-ai-center p-jc-between pb-5">
+              My Wineries
+                <div class="float-end">
+                  <button class="pull-right" mat-fab color="accent">
+                    <span class="material-icons">add</span>
+                </button>
+             </div>
+              <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange()" [style]="{'min-width':'10em'}"></p-dropdown>
+          </div>
+      </ng-template>
+      <ng-template let-winery  pTemplate="item" let-i="index">
+          <div class="winery-item">
+              <div class="image-container">
+                <img src="assets/images/wineryLogo.jpg" alt="{{winery.Name}}" style="display:inline-block;margin:2px 0 2px 2px" width="100"> 
+              </div>
+              <div class="winery-list-left">
+                  <div class="ps-2">{{winery.Name}}</div>
+              </div>
+              <div class="winery-list-right">
+                <h3 class="p-mb-2"><p-rating [cancel]="false" [(ngModel)]="val"></p-rating></h3> -->
+                <!-- <h3 class="p-mb-2">{{winery.Rating}}</h3> -->
+                <!-- <span class="pull-right">{{winery.Phone}}</span>
+              </div>
+          </div>
+      </ng-template>
+  </p-virtualScroller>
+</div> -->
+<p-table [value]="wineries" [globalFilterFields]="'Name'"  [responsive]='true' [scrollable]='true'>
+  <ng-template pTemplate="caption">
+      <div class="winery-header p-d-flex p-ai-center p-jc-between">
+          My Wineries
+          <!-- <div class="float-end"> -->
+            <button class="pull-right" mat-fab color="accent">
+              <span class="material-icons">add</span>
+            </button>
+          <!-- </div> -->
+      </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+      <tr>
+          <th [pSortableColumn]='"Name"' >Name
+            <p-sortIcon [field]='"Name"'></p-sortIcon>
+            <p-columnFilter type='text' field='Name' display='menu'></p-columnFilter>
+          </th>
+          <th>Phone Number</th>
+          <th [pSortableColumn]='"Rating"'>Rating
+            <p-sortIcon [field]='"Rating"'></p-sortIcon>
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body"  let-winery>
+      <tr class="winery-data">
+          <td>
+            <img src="assets/images/wineryLogo.jpg" alt="{{winery.Name}}" width="100" class="p-shadow-4" />
+            {{winery.Name}}</td>
+          <td>{{winery.Phone}}</td>
+          <td>
+            <p-rating [ngModel]="winery.Rating"  [cancel]="false" ></p-rating>
+          </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+          In total there are {{wineries ? wineries.length : 0 }} wineries.
+      </div>
+  </ng-template>
+</p-table>
+
