@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IWinery } from '../winery';
 import { WineryService } from '../winery.service';
 import { TableModule } from 'primeng/table';
@@ -20,9 +20,9 @@ local variables
 
 	private getAllSubscription: Subscription | undefined;
 	codeName = 'winery-grid';
-	wineries: IWinery[] = [];
+	wineries = [];
 	totalRecords: number = 0;
-  alternativeUrl: string = "assets/images/wineryLogo.jpg"
+    alternativeUrl: string = "assets/images/wineryLogo.jpg"
 	/*
 	** On component creation (inject services).
 	*/
@@ -30,8 +30,9 @@ local variables
 		private _messageService: MessageService,
 		// communicate to the http web service
 		private _data: WineryService
-	) {
-		this.val=3;
+	) 
+	{
+		//this.val=3; was used with the ordered list will take a look later
 	}
 	/*
 	** On component initialization, get all data from the data service.
