@@ -30,7 +30,7 @@
         <input type="text" id="wineryEmailID" pInputText formControlName="wineryEmail" class="form-control">
         <label for="wineryEmailID">Email</label>
       </span>
-      <small *ngIf="wineryForm.controls.wineryEmail.errors?.pattern && wineryForm.touched && !wineryForm.valid" class="p-error block">Please enter a valid email.</small>
+      <small *ngIf="wineryForm.controls.wineryEmail.errors?.email && wineryForm.touched && !wineryForm.valid" class="p-error block">Please enter a valid email.</small>
     </div>
 
     <div class="m-5 col-6">
