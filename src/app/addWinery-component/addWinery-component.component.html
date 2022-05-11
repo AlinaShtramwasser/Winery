@@ -1,48 +1,53 @@
 <form novalidate (ngSubmit)="save();" [formGroup]="wineryForm" class="p-fluid grid">
-  <p-panel header="Add Winery">
+  <div class="col-6 mx-auto">
+    <p-panel header="Add Winery">
 
-    <div class="m-5 col-6">
-      <span class="p-float-label">
-        <input type="text" id="wineryNameID" pInputText formControlName="wineryName" class="form-control">
-        <label for="wineryNameID">Winery Name</label>
-      </span>
-      <small *ngIf="wineryForm.controls.wineryName.errors?.required && wineryForm.touched && !wineryForm.valid"  class="p-error block">Please enter winery name.</small>
-    </div>
+      <div class="m-5">
+        <span class="p-float-label">
+          <input type="text" id="wineryNameID" pInputText formControlName="wineryName" class="form-control">
+          <label for="wineryNameID">Winery Name</label>
+        </span>
+        <small *ngIf="wineryForm.controls.wineryName.errors?.required && wineryForm.touched && !wineryForm.valid"
+          class="p-error block">Please enter winery name.</small>
+      </div>
 
-    <div class="m-5 col-6">
-      <span class="p-float-label">
-        <input type="text" id="wineryUrlID" pInputText formControlName="wineryUrl" class="form-control">
-        <label for="wineryUrlID">URL</label>
-      </span>
-      <small *ngIf="wineryForm.touched && !wineryForm.valid && wineryForm.controls.wineryUrl.errors?.pattern" class="p-error block">Please provide a valid url.</small>
-    </div>
+      <div class="m-5">
+        <span class="p-float-label">
+          <input type="text" id="wineryUrlID" pInputText formControlName="wineryUrl" class="form-control">
+          <label for="wineryUrlID">URL</label>
+        </span>
+        <small *ngIf="wineryForm.touched && !wineryForm.valid && wineryForm.controls.wineryUrl.errors?.pattern"
+          class="p-error block">Please provide a valid url.</small>
+      </div>
 
-    <div class="m-5 col-6">
-      <span class="p-float-label">
-        <p-inputMask id="wineryPhoneID" formControlName="wineryPhone" mask="(999) 999-9999" >
-        </p-inputMask>
-        <label for="wineryPhoneID">Phone</label>
-      </span>
-    </div>
+      <div class="m-5">
+        <span class="p-float-label">
+          <p-inputMask id="wineryPhoneID" formControlName="wineryPhone" mask="(999) 999-9999">
+          </p-inputMask>
+          <label for="wineryPhoneID">Phone</label>
+        </span>
+      </div>
 
-    <div class="m-5 col-6">
-      <span class="p-float-label">
-        <input type="text" id="wineryEmailID" pInputText formControlName="wineryEmail" class="form-control">
-        <label for="wineryEmailID">Email</label>
-      </span>
-      <small *ngIf="wineryForm.controls.wineryEmail.errors?.email && wineryForm.touched && !wineryForm.valid" class="p-error block">Please enter a valid email.</small>
-    </div>
+      <div class="m-5">
+        <span class="p-float-label">
+          <input type="text" id="wineryEmailID" pInputText formControlName="wineryEmail" class="form-control">
+          <label for="wineryEmailID">Email</label>
+        </span>
+        <small *ngIf="wineryForm.controls.wineryEmail.errors?.email && wineryForm.touched && !wineryForm.valid"
+          class="p-error block">Please enter a valid email.</small>
+      </div>
 
-    <div class="m-5 col-6">
-      <h3>Rating</h3>
-      <p-rating id="wineryRatingID" formControlName="wineryRating" [cancel]="false" ></p-rating>
-    </div>
+      <div class="m-5">
+        <h3>Rating</h3>
+        <p-rating id="wineryRatingID" formControlName="wineryRating" [cancel]="false"></p-rating>
+      </div>
 
 
-    <div class="m-5 col-6">
-      <button pButton type="button" class="p-button-rounded" label="Submit" (click)="save();"
-        [disabled]="!wineryForm.valid">
-      </button>
-    </div>
-  </p-panel>
+      <div class="m-5">
+        <button pButton type="button" class="p-button-rounded" label="Submit" (click)="save();"
+          [disabled]="!wineryForm.valid">
+        </button>
+      </div>
+    </p-panel>
+  </div>
 </form>

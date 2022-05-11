@@ -52,7 +52,7 @@
           My Wineries
           <!-- <div class="float-end"> -->
             <button class="pull-right" mat-fab color="accent">
-              <span class="material-icons">add</span>
+              <span class="material-icons" (click)="changeVisibility();">add</span>
             </button>
           <!-- </div> -->
       </div>
@@ -76,7 +76,7 @@
             {{winery.Name}}</td>
           <td>{{winery.Phone}}</td>
           <td>
-            <p-rating [ngModel]="winery.Rating"  [cancel]="false" ></p-rating>
+            <p-rating [ngModel]="winery.Rating" (onRate)="SaveRating(winery.Id)"  [cancel]="false" ></p-rating>
           </td>
       </tr>
   </ng-template>

@@ -60,6 +60,14 @@ local variables
 			}, ( error ) => this.serviceErrorHandler(
 					`${this.codeName}.getAllWineries:`, error ));
 	}
+
+	changeVisibility(): void {
+		alert("here");
+	}
+
+	SaveRating(id: string){
+		alert(id);
+	}
 	//
 	// Handle an error from the data service.
 	//

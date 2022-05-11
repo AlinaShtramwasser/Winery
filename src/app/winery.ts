@@ -8,7 +8,7 @@
 ** define the interface IWinery and class Winery
 */
 export interface IWinery {
-	Id: number;
+	Id: string;
 	Name: string;
 	Address: string;
 	Url: string;
@@ -24,13 +24,13 @@ export class Winery implements IWinery {
 	** Single place to create a new Winery.
 	*/
 	public static empty( ): IWinery {
-		return new Winery( 0, '', '', '', '','', '', 0);
+		return new Winery( "0", '', '', '', '','', '', 0);
 	}
 	/*
 	** using short-hand declaration...
 	*/
 	constructor(
-		public Id: number,
+		public Id: string,
 		public Name: string,
 		public Address: string,
 		public Url: string,
