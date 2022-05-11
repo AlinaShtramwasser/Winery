@@ -39,6 +39,7 @@ export class Winery implements IWinery {
 		public ImageTitle: string,
 		public Rating: number
 	) { }
+	
 	/*
 	** toString implementation for class Winery
 	*/

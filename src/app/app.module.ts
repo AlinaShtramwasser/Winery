@@ -3,7 +3,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputMaskModule} from 'primeng/inputmask';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import {PanelModule} from 'primeng/panel';
 //for fetching data from external apis and provide them to the app as a stream
 import { HttpClientModule } from "@angular/common/http";
 import {TableModule} from 'primeng/table';
@@ -17,16 +22,21 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import {RatingModule} from 'primeng/rating';
-
+import { AddWineryComponentComponent } from './addWinery-component/addWinery-component.component';
+import {ButtonModule} from 'primeng/button';
 @NgModule({
-  declarations: [				
+  declarations: [							
     AppComponent,
     WineryGridComponent,
     WineryListComponent,
+      AddWineryComponentComponent
    ],
   imports: [
     BrowserModule,
     FormsModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    ButtonModule,
     //OrderListModule,
     VirtualScrollerModule,
     HttpClientModule,
@@ -35,9 +45,11 @@ import {RatingModule} from 'primeng/rating';
     ]),
     TableModule,
     ToastModule,
+    InputMaskModule,
     RatingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    PanelModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],
