@@ -13,11 +13,12 @@
 
       <div class="m-5">
         <span class="p-float-label">
-          <input type="text" id="wineryUrlID" pInputText formControlName="wineryUrl" class="form-control">
+          <input type="text" id="wineryUrlID" pInputText formControlName="wineryUrl"  class="form-control">
           <label for="wineryUrlID">URL</label>
         </span>
-        <small *ngIf="wineryForm.touched && !wineryForm.valid && wineryForm.controls.wineryUrl.errors?.pattern"
-          class="p-error block">Please provide a valid url.</small>
+        <small class="p-error block">{{urlErrorMessage}}</small>
+        <!-- <small *ngIf="wineryForm.touched && !wineryForm.valid && wineryForm.controls.wineryUrl.errors?.pattern"
+          class="p-error block">Please provide a valid url.</small> -->
       </div>
 
       <div class="m-5">
@@ -33,8 +34,9 @@
           <input type="text" id="wineryEmailID" pInputText formControlName="wineryEmail" class="form-control">
           <label for="wineryEmailID">Email</label>
         </span>
-        <small *ngIf="wineryForm.controls.wineryEmail.errors?.email && wineryForm.touched && !wineryForm.valid"
-          class="p-error block">Please enter a valid email.</small>
+        <small class="p-error block">{{emailErrorMessage}}</small>
+        <!-- <small *ngIf="wineryForm.controls.wineryEmail.errors?.email && wineryForm.touched && !wineryForm.valid"
+          class="p-error block">Please enter a valid email.</small> -->
       </div>
 
       <div class="m-5">
