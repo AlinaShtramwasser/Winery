@@ -2,17 +2,17 @@
 // File: winery.service.ts
 // Service for Winery class
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 //
 import { Observable, of, throwError } from 'rxjs';
 
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 import { IWinery, Winery } from './winery';
 
 //https://www.techiediaries.com/angular-by-example-httpclient-get/
 //https://www.concretepage.com/angular-2/angular-httpclient-get-example
-@Injectable( { providedIn: 'root' } )
+@Injectable({ providedIn: 'root' })
 export class WineryService {
 	/*
 	** --------------------------------------------------------------------
@@ -20,39 +20,72 @@ export class WineryService {
 	*/
 	baseUrl: string;
 	codeName: string;
-	// mockDatum: IWinery[] = [
-	// 	new Winery( 1, 'Spring Mountain', '2805 Spring Mountain Rd, St. Helena', 'http://www.springmountainvineyard.com/', '205-333-0303', 'spring@email.com', 'springmountain', 5 ),
-	// 	new Winery( 2, 'Venge', '4708 Silverado Trail N, Calistoga', 'https://www.vengevineyards.com/', '205-777-0303', 'venge@email.com', 'venge', 5 ),
-	// 	new Winery( 3, 'Von Strasser', '965 Silverado Trail N, Calistoga', 'https://www.vonstrasser.com/', '205-793-5555', 'von@strasser.com', 'vonstrasser', 3 ),
-	// 	new Winery( 4, 'Iron Horse', ' 9786 Ross Station Rd, Sebastopol', 'https://www.ironhorsevineyards.com/', '205-123-2255', 'iron@horse.com','ironhorse', 2 ),
-	// 	new Winery( 5, 'Pride', '3000 Summit Trail, Santa Rosa', 'https://www.pridewines.com/', '205-555-5555', 'pride@email.com','pride', 5 ),
-	// 	new Winery( 6, 'Behrens Family', '4078 Spring Mountain Rd, St Helena', 'https://behrensfamilywinery.com/', '205-666-6666', 'behrens@mail.com','behrens', 3 )
-	// ];
+	headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
 	/*
 	** Service constructor, inject http service.
 	*/
-	constructor(protected httpClient: HttpClient ) {
-			this.codeName = 'winery.service';
-			this.baseUrl ="http://localhost:12895/api/winery/";
+	constructor(protected httpClient: HttpClient) {
+		this.codeName = 'winery.service';
+		this.baseUrl = "http://localhost:12895/api/winery/";
 	}
 	/*
 	** Read (get) all Winery.
 	*/
-	getWineries( ): Observable<any>  {
+	getWineries(): Observable<any> {
 		return this.httpClient.get(this.baseUrl);
 	}
+
+
+	//check if I can use Winery or IWinery and get<Winery> etc
+	getWinery(id: string): Observable<any> {
+		const url = this.baseUrl + id;
+		return this.httpClient.get(url)
+			//used for debugging, tap allows xss to data wzt modifying it
+			.pipe(
+				tap(data => console.log('getWinery: ' + JSON.stringify(data))),
+				catchError(this.handleError)
+			);
+	}
+
+	//Post (api/winery) to add a new one
+	createWinery(winery: IWinery): Observable<any> {
+		//const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		return this.httpClient.post<Winery>(this.baseUrl, winery, { headers: this.headers });
+
+	}
+
+	//Put (api/winery/id) to change idempotent call
+	updateWinery(winery: IWinery): Observable<any> {
+		//const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		const url = this.baseUrl + winery.Id;
+		return this.httpClient.put<Winery>(url, winery, { headers: this.headers });
+	}
+
+	//Put (api/winery/rating/id/ratingId)
+	updateRating(wineryId:string, ratingId: number): Observable<any> {
+		const url = this.baseUrl + "rating" + "/" + wineryId + "/" + ratingId;
+		console.log(url);
+		return this.httpClient.put<Winery>(url, { headers: this.headers }); 
+	}
+
+	deleteWinery(id: string): Observable<any> {
+		const url = this.baseUrl + id;
+		return this.httpClient.delete<Winery>(url, {headers: this.headers});
+	}
+	
 	/*
 	** General error handler, should throw a string.
 	*/
-	handleError( error: any ) {
-		if ( error instanceof HttpErrorResponse ) {
+	handleError(error: any) {
+		if (error instanceof HttpErrorResponse) {
 			console.error(
-				`${this.codeName}.handleError: ${JSON.stringify(error)}` );
-			return throwError( error.statusText || 'Service error' );
+				`${this.codeName}.handleError: ${JSON.stringify(error)}`);
+			return throwError(error.statusText || 'Service error');
 		}
 		console.error(
-			`${this.codeName}.handleError: ${error}` );
-		return throwError( error.toString() || 'Service error' );
+			`${this.codeName}.handleError: ${error}`);
+		return throwError(error.toString() || 'Service error');
 	}
 	//
 }

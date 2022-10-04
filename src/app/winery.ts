@@ -24,11 +24,19 @@ export class Winery implements IWinery {
 	** Single place to create a new Winery.
 	*/
 	public static empty( ): IWinery {
-		return new Winery( "0", '', '', '', '','', '', 0);
+		return new Winery( "", '', '', '', '','', '', 0);
 	}
-	/*
-	** using short-hand declaration...
-	*/
+
+	// constructor(
+	// 	public Id: string,
+	// 	public Name: string,
+	// 	public Address: string,
+	// 	public Url: string,
+	// 	public Phone: string,
+	// 	public Email: string,
+	// 	public ImageTitle: string,
+	// 	public Rating: number
+	// ) { }
 	constructor(
 		public Id: string,
 		public Name: string,
@@ -39,7 +47,6 @@ export class Winery implements IWinery {
 		public ImageTitle: string,
 		public Rating: number
 	) { }
-	
 	/*
 	** toString implementation for class Winery
 	*/
