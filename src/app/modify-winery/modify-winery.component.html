@@ -18,8 +18,6 @@
             <label for="wineryUrlID">URL</label>
           </span>
           <small class="p-error block">{{urlErrorMessage}}</small>
-          <!-- <small *ngIf="wineryForm.touched && !wineryForm.valid && wineryForm.controls.wineryUrl.errors?.pattern"
-          class="p-error block">Please provide a valid url.</small> -->
         </div>
 
         <div class="m-5">
@@ -40,6 +38,13 @@
           class="p-error block">Please enter a valid email.</small> -->
         </div>
 
+        <div class="m-5">
+          <span class="p-float-label">
+            <textarea maxlength="250" id="WineryNotes" rows="5" cols="50" formControlName="wineryNotes"  pInputTextArea></textarea>
+            <label for="WineryNotes">Notes</label>
+          </span>
+        </div>
+    
         <div class="m-5">
           <h3>Rating</h3>
           <p-rating id="wineryRatingID" formControlName="wineryRating" [cancel]="false"></p-rating>

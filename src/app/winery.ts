@@ -16,6 +16,7 @@ export interface IWinery {
 	Phone: string;
 	Email: string;
 	ImageTitle: string;
+	Notes: string;
 	toString(): string;
 }
 
@@ -24,7 +25,7 @@ export class Winery implements IWinery {
 	** Single place to create a new Winery.
 	*/
 	public static empty( ): IWinery {
-		return new Winery( "", '', '', '', '','', '', 0);
+		return new Winery( "", '', '', '', '','', '', 0, '');
 	}
 
 	// constructor(
@@ -45,7 +46,8 @@ export class Winery implements IWinery {
 		public Phone: string,
 		public Email: string,
 		public ImageTitle: string,
-		public Rating: number
+		public Rating: number,
+		public Notes: string
 	) { }
 	/*
 	** toString implementation for class Winery

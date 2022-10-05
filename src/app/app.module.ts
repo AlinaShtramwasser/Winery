@@ -24,12 +24,14 @@ import { AngularMaterialModule } from './angular-material.module';
 import {RatingModule} from 'primeng/rating';
 import { ModifyWineryComponent } from './modify-winery/modify-winery.component';
 import {ButtonModule} from 'primeng/button';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 @NgModule({
-  declarations: [							
+  declarations: [								
     AppComponent,
     //WineryGridComponent,
     WineryListComponent,
-    ModifyWineryComponent
+    ModifyWineryComponent,
+    MatConfirmDialogComponent
    ],
   imports: [
     BrowserModule,
