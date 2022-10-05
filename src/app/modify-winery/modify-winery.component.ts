@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { IWinery, Winery } from '../winery';
 import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import {InputTextModule} from 'primeng/inputtext';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WineryService } from '../winery.service';
 import { MessageService } from 'primeng/api';
@@ -10,6 +11,7 @@ import { __metadata } from 'tslib';
 
 @Component({
   templateUrl: './modify-winery.component.html',
+  styleUrls: ['./modify-winery.component.css']
 })
 
 export class ModifyWineryComponent implements OnInit, OnDestroy {
@@ -45,6 +47,7 @@ export class ModifyWineryComponent implements OnInit, OnDestroy {
       wineryPhone: new FormControl(),
       wineryEmail: ['', Validators.email],
       wineryRating: new FormControl(),
+      wineryNotes: new FormControl()
     });
 
     /*If I use this it doesn't show the error when we are not focusing, I still want it to because I'm disabling the button
@@ -104,6 +107,7 @@ export class ModifyWineryComponent implements OnInit, OnDestroy {
       wineryPhone: this.winery.Phone,
       wineryEmail: this.winery.Email,
       wineryRating: this.winery.Rating,
+      wineryNotes: this.winery.Notes
     });
   }
 
@@ -113,7 +117,7 @@ export class ModifyWineryComponent implements OnInit, OnDestroy {
   serviceErrorHandler(where: string, error: string) {
     this._messageService.add({
       key: 'app', sticky: true,
-      severity: 'error', summary: 'Add Winery Error', detail: error || 'Server error'
+      severity: 'error', summary: 'Winery Modification Error', detail: error || 'Server error'
     });
   }
 
@@ -147,7 +151,8 @@ export class ModifyWineryComponent implements OnInit, OnDestroy {
           this.wineryForm.get("wineryPhone").value,
           this.wineryForm.get("wineryEmail").value,
           "",
-          rating);
+          rating,
+          this.wineryForm.get("wineryNotes").value);
         //var userEnteredData = JSON.stringify(this.wineryForm.value);
         // console.log("winery info:", userEnteredData);
         //we create an object that is based on the existing winery (the original object has more fields than the form, eg. id), then we copy over the values from the form

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { DialogService } from '../dialog.service';
 import { WineryService } from '../winery.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class WineryListComponent implements OnInit, OnDestroy {
 		private _messageService: MessageService,
 		// to talk to the web server
 		private _data: WineryService,
+		private _dialoService: DialogService
 	) { }
 
 	/*
@@ -40,7 +42,7 @@ export class WineryListComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	OnSaveComplete(): void {
+	onSaveComplete(): void {
 		this.getAllWineries();
 	}
 
@@ -57,7 +59,7 @@ export class WineryListComponent implements OnInit, OnDestroy {
 	}
 
 	//saving
-	SaveRating(event: any, id: string) {
+	saveRating(event: any, id: string) {
 
 		this._data.updateRating(id, event.value)
 			.subscribe({
@@ -66,11 +68,16 @@ export class WineryListComponent implements OnInit, OnDestroy {
 	}
 
 	//deleting
-	DeleteWinery(id: string) {
-		this._data.deleteWinery(id)
-			.subscribe({
-				next: () => this.OnSaveComplete(),
-				error: (err: Error) => this.serviceErrorHandler(`${this._data}.deleteWinery(id, ratingID):`, err.message)
+	deleteWinery(id: string) {
+		this._dialoService.openConfirmDialog('Are you sure you want to delete this winery?')
+			.afterClosed().subscribe(res => {
+				if (res) {
+					this._data.deleteWinery(id)
+						.subscribe({
+							next: () => this.onSaveComplete(),
+							error: (err: Error) => this.serviceErrorHandler(`${this._data}.deleteWinery(id, ratingID):`, err.message)
+						});
+				}
 			});
 	}
 

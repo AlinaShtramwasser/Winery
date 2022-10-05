@@ -44,13 +44,13 @@
       </td>
       <td style="text-align:left">{{winery.Phone}}</td>
       <td style="text-align:left">
-        <p-rating [ngModel]="winery.Rating" (onRate)="SaveRating($event, winery.Id);" [cancel]="false"></p-rating>
+        <p-rating [ngModel]="winery.Rating" (onRate)="saveRating($event, winery.Id);" [cancel]="false"></p-rating>
       </td>
       <td colspan="2">
         <a mat-fab color="primary" class="m-2" [routerLink]="['/wineries',  winery.Id, 'edit']">
           <span class="material-icons">edit</span>
         </a>
-        <a mat-fab color="warn" (click)="DeleteWinery(winery.Id);">
+        <a mat-fab color="warn" (click)="deleteWinery(winery.Id);">
           <span class="material-icons">delete</span>
         </a>
       </td>
