@@ -3,6 +3,7 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { DialogService } from '../dialog.service';
 import { WineryService } from '../winery.service';
+import {PasswordModule} from 'primeng/password';
 
 @Component({
 	selector: 'app-winery-list',
@@ -15,7 +16,7 @@ export class WineryListComponent implements OnInit, OnDestroy {
 	private getAllSubscription: Subscription | undefined;
 	codeName = 'winery-grid';
 	wineries = [];
-
+    isLoggedin?: boolean;
 	totalRecords: number = 0;
 	alternativeUrl: string = "assets/images/wineryLogo.jpg"
 	/*
@@ -28,12 +29,17 @@ export class WineryListComponent implements OnInit, OnDestroy {
 		private _dialoService: DialogService
 	) { }
 
+	login(){
+		this.isLoggedin = true;
+	}
+
 	/*
 	** On component initialization, get all data from the data service.
 	*/
 	ngOnInit() {
 		// load all records
 		this.getAllWineries();
+		this.isLoggedin = false;
 	}
 
 	ngOnDestroy(): void {
