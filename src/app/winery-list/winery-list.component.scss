@@ -104,6 +104,9 @@
   background-repeat: none;
 }
 
+.transparentBackground{
+  background-color: rgba(255,255,255,0.5);
+}
 .circButton{
   width: 30vh;
   height:30vh;
@@ -116,7 +119,7 @@
 }
 
 .text{
-  width:30vh;
+  width:40vh;
 }
 
 //The below goes with the orderlist

@@ -1,18 +1,22 @@
 <div>
+  <form novalidate (ngSubmit)="login();" [formGroup]="loginForm" class="p-fluid grid">
   <div *ngIf="isLoggedin === false" class="outer d-flex align-items-end justify-content-evenly">
-    <div>
+    <div class="p-3 transparentBackground">
       <div class="row pb-5">
-        <div class="col">
-          <input type="text" pInputText class="text"  placeholder="Google Email">
+        <div class="col" style="opacity:1">
+          <input type="text" pInputText class="text" formControlName="googleEmail"  placeholder="Google Email">
+          <small class="p-error block">{{emailErrorMessage}}</small>
         </div>
       </div>
       <div class="row pb-3">
         <div class="col">
-          <input type="password" pInputText class="text" placeholder="Password"/>
+          <input type="password" pInputText class="text" formControlName="googlePassword" placeholder="Password"/>
+          <small *ngIf="loginForm.controls.googlePassword.errors?.required && loginForm.touched && !loginForm.valid"
+          class="p-error block">Please enter a password.</small>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col text-center">
           <button type="button" class="circButton" (click)="login();"></button>
           <!-- <img id="ButtonImage" 
               src="../../assets/images/barelTransparentBackground.png"> -->
@@ -20,6 +24,8 @@
       </div>
     </div>
   </div>
+</form>
+
   <div *ngIf="isLoggedin === true">
     <p-table [value]="wineries" [globalFilterFields]="'Name'" [responsive]='true' [scrollable]='true'>
       <!-- <ng-template pTemplate="caption">
