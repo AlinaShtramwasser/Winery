@@ -5,14 +5,18 @@
       <div class="row pb-5">
         <div class="col" style="opacity:1">
           <input type="text" pInputText class="text" formControlName="googleEmail"  placeholder="Google Email">
-          <small class="p-error block">{{emailErrorMessage}}</small>
+          <br/>
+          <small *ngIf="loginForm.controls.googleEmail.errors?.required && loginForm.touched && !loginForm.valid"
+          class="p-error block bg-light">Please enter an email</small>
+          <small class="p-error block bg-light">{{emailErrorMessage}}</small>
         </div>
       </div>
       <div class="row pb-3">
         <div class="col">
           <input type="password" pInputText class="text" formControlName="googlePassword" placeholder="Password"/>
+         <br/>
           <small *ngIf="loginForm.controls.googlePassword.errors?.required && loginForm.touched && !loginForm.valid"
-          class="p-error block">Please enter a password.</small>
+          class="p-error block bg-light">Please enter a password</small>
         </div>
       </div>
       <div class="row">

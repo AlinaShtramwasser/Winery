@@ -48,10 +48,9 @@ export class WineryListComponent implements OnInit, OnDestroy {
 
 		const loginEmailControl = this.loginForm.get('googleEmail');
 		loginEmailControl.valueChanges.pipe(
-			debounceTime(1000)
-		).subscribe(
-			value => this.setMessage(loginEmailControl, 'googleEmail')
-		);
+			debounceTime(1000)).subscribe(
+				value => this.setMessage(loginEmailControl, 'googleEmail')
+			);
 	}
 
 	login(): void {
@@ -62,9 +61,7 @@ export class WineryListComponent implements OnInit, OnDestroy {
 				this.isLoggedin = true;
 
 				var email = this.loginForm.get("googleEmail").value;
-				alert(email);
 				var password = this.loginForm.get("googlePassword").value;
-				alert(password);
 			}
 		}
 	}
