@@ -3,8 +3,14 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { DialogService } from '../dialog.service';
 import { WineryService } from '../winery.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+//google authentication example from: https://www.positronx.io/angular-google-social-login-tutorial-with-example/
+import {
+	SocialAuthService,
+	GoogleLoginProvider,
+	SocialUser,
+} from 'angularx-social-login';
 @Component({
 	selector: 'app-winery-list',
 	templateUrl: './winery-list.component.html',
@@ -19,6 +25,8 @@ export class WineryListComponent implements OnInit, OnDestroy {
 	wineries = [];
 	isLoggedin?: boolean;
 	emailErrorMessage: string;
+	socialUser!: SocialUser;
+	passwordError: boolean;
 	totalRecords: number = 0;
 	alternativeUrl: string = "assets/images/wineryLogo.jpg"
 	/*
@@ -29,7 +37,8 @@ export class WineryListComponent implements OnInit, OnDestroy {
 		private _messageService: MessageService,
 		// to talk to the web server
 		private _data: WineryService,
-		private _dialoService: DialogService
+		private _dialoService: DialogService,
+		private socialAuthService: SocialAuthService
 	) { }
 
 	/*
@@ -45,30 +54,41 @@ export class WineryListComponent implements OnInit, OnDestroy {
 			googleEmail: ['', [Validators.required, Validators.email]],
 		});
 
+		this.socialAuthService.authState.subscribe((user) => {
+			this.socialUser = user;
+			this.isLoggedin = user != null;
+			console.log(this.socialUser);
+		});
 
 		const loginEmailControl = this.loginForm.get('googleEmail');
 		loginEmailControl.valueChanges.pipe(
 			debounceTime(1000)).subscribe(
-				value => this.setMessage(loginEmailControl, 'googleEmail')
+				value => this.setMessage({ control: loginEmailControl })
 			);
 	}
 
 	login(): void {
+		var emailControl = this.loginForm.get("googleEmail");
+		var passwordControl = this.loginForm.get("googlePassword");
 		//validation is OK
 		if (this.loginForm.valid) {
 			//changes exist
 			if (this.loginForm.dirty) {
 				this.isLoggedin = true;
 
-				var email = this.loginForm.get("googleEmail").value;
-				var password = this.loginForm.get("googlePassword").value;
+				var email = emailControl.value;
+				var password = passwordControl.value;
+				this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
 			}
+		} else {
+			this.setMessage({ control: emailControl });
+			this.passwordError = true;
 		}
 	}
 
-	setMessage(control: AbstractControl, name: string): void {
+	setMessage({ control }: { control: AbstractControl; }): void {
 		this.emailErrorMessage = '';
-		if ((control.touched || control.dirty) && control.errors) {
+		if (control.errors) {
 			this.emailErrorMessage = "Please enter a valid email";
 		}
 	}

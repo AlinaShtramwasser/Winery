@@ -25,6 +25,12 @@ import {RatingModule} from 'primeng/rating';
 import { ModifyWineryComponent } from './modify-winery/modify-winery.component';
 import {ButtonModule} from 'primeng/button';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleLoginProvider
+} from 'angularx-social-login';
+//import { GoogleLoginProvider } from 'angularx-social-login';
 @NgModule({
   declarations: [								
     AppComponent,
@@ -38,6 +44,7 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     FormsModule,
     InputTextModule,
     ReactiveFormsModule,
+    SocialLoginModule,
     ButtonModule,
     //OrderListModule,
     VirtualScrollerModule,
@@ -60,7 +67,20 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
     AngularMaterialModule,
     PanelModule
   ],
-  providers: [MessageService],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('523587614236-5n3m3des3ckprb697i2smu2aqomqfndp.apps.googleusercontent.com'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+    MessageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
